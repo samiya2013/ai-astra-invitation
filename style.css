@@ -94,11 +94,7 @@ body::before {
   border: 1px solid #39e7ff50;
   border-radius: 50px;
   color: var(--cyan);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 2.5px;
 }
-
 .status-dot {
   width: 7px;
   height: 7px;
@@ -184,7 +180,6 @@ h1 {
   line-height: 1.2;
   text-shadow: 0 0 25px #39e7ff20;
 }
-
 h1 span {
   color: var(--cyan);
 }
@@ -234,8 +229,6 @@ h2 {
     font-size: 17px;
   }
 }
-
-
 .event-card {
   display: flex;
   align-items: center;
@@ -309,7 +302,6 @@ h2 {
 @keyframes rotate-back {
   to { transform: rotate(-360deg); }
 }
-
 @keyframes blink {
   50% { opacity: 0.35; }
 }
@@ -363,82 +355,171 @@ h2 {
     scroll-behavior: auto !important;
   }
 }
-
-.countdown-card {
-  max-width: 460px;
-  border-color: #39e7ff55;
-  background: linear-gradient(135deg, #102b43, #101a35);
-}
-
-.countdown-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.countdown {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-  margin: 12px 0;
-  text-align: center;
-}
-
-.countdown > div {
-  padding: 10px 3px;
-  border: 1px solid #39e7ff35;
-  border-radius: 8px;
-  background: #39e7ff09;
-}
-
-.countdown span {
-  display: block;
-  color: #39e7ff;
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(17px, 4vw, 24px);
-  font-weight: 700;
-  text-shadow: 0 0 12px #39e7ff35;
-}
-
-.countdown small {
-  display: block;
-  margin-top: 6px;
-  color: #a9baff;
-  font-size: 8px;
-  letter-spacing: 1px;
-}
-
-.countdown-date {
-  margin-top: 12px;
-  color: #dcecff;
-  font-size: 10px;
-  line-height: 1.6;
-  letter-spacing: 1px;
-}
-
-@media (max-width: 480px) {
-  .countdown-card {
-    gap: 10px;
-    padding: 12px 9px;
-  }
-
-  .countdown {
-    gap: 4px;
-  }
-
-  .countdown > div {
-    padding: 9px 1px;
-  }
-
-  .countdown small {
-    font-size: 7px;
-    letter-spacing: 0;
-  }
-}
-
 .launch-message {
   grid-column: 1 / -1;
   color: #39e7ff;
   font-family: 'Orbitron', sans-serif;
   font-size: 12px;
   line-height: 1.8;
+}
+
+/* AI ASTRA launch message */
+.launch-message {
+    text-align: center;
+    padding: 28px 16px;
+    animation: astraLaunch 1.2s ease-out both;
+}
+
+.launch-message h2 {
+    color: #67e8f9;
+    font-size: clamp(22px, 4vw, 38px);
+    text-shadow: 0 0 12px rgba(0, 225, 255, 0.8),
+                 0 0 28px rgba(0, 225, 255, 0.35);
+    letter-spacing: 2px;
+}
+
+.launch-message p {
+    color: #ffffff;
+    font-size: clamp(20px, 3vw, 28px);
+    margin: 14px 0;
+}
+
+.launch-message span {
+    display: inline-block;
+    color: #a5f3fc;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-top: 8px;
+    animation: astraBlink 1.2s infinite alternate;
+}
+
+#countdown.launched {
+    border-color: transparent;
+    box-shadow: 0 0 30px rgba(0, 225, 255, 0.15);
+}
+
+@keyframes astraLaunch {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes astraBlink {
+    from { opacity: 0.55; }
+    to { opacity: 1; }
+}
+
+
+/* AI ASTRA notification button */
+#enable-notifications {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 20px;
+  color: #67e8f9;
+  background: rgba(7, 20, 38, 0.75);
+  border: 1px solid #39e7ff90;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 14px #39e7ff18;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+#enable-notifications:hover {
+  background: #39e7ff15;
+  box-shadow: 0 0 22px #39e7ff45;
+}
+
+#notification-status {
+  margin: 10px auto 0;
+  color: #9caec9;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Futuristic countdown boxes */
+#countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+#countdown > div:not(.launch-message) {
+  min-width: 0;
+  padding: 16px 6px;
+  text-align: center;
+  background: linear-gradient(145deg, rgba(12, 39, 65, 0.95), rgba(4, 16, 32, 0.98));
+  border: 1px solid rgba(0, 229, 255, 0.55);
+  border-radius: 12px;
+  box-shadow:
+    0 0 12px rgba(0, 229, 255, 0.12),
+    inset 0 0 14px rgba(0, 229, 255, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#countdown > div:not(.launch-message):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+}
+
+#countdown span {
+  display: block;
+  color: #62f4ff;
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 800;
+  line-height: 1.2;
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+  font-variant-numeric: tabular-nums;
+}
+
+#countdown small {
+  display: block;
+  margin-top: 8px;
+  color: #a8c7df;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+#countdown .launch-message {
+  grid-column: 1 / -1;
+  padding: 22px 12px;
+  color: #62f4ff;
+  text-align: center;
+  line-height: 1.8;
+  font-weight: 800;
+  border: 1px solid rgba(0, 229, 255, 0.65);
+  border-radius: 12px;
+  background: rgba(4, 25, 45, 0.95);
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.2);
+}
+
+#countdown .launch-message small {
+  color: #d5faff;
+  font-size: 12px;
+}
+
+@media (max-width: 380px) {
+  #countdown {
+    gap: 6px;
+  }
+
+  #countdown > div:not(.launch-message) {
+    padding: 12px 3px;
+  }
+
+  #countdown small {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
 }
