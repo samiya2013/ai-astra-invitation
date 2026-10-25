@@ -15,6 +15,7 @@
   padding: 0;
 }
 
+
 body {
   min-height: 100vh;
   display: flex;
@@ -23,12 +24,18 @@ body {
   padding: 35px 16px;
   overflow-x: hidden;
   position: relative;
-  background:
-    radial-gradient(ellipse at 50% 0%, #12375b 0%, transparent 55%),
-    linear-gradient(145deg, #040a16, #071a31 55%, #080d20);
+
+  background-color: #05051b;
+  background-image: url("nexora-poster.png");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
   color: var(--white);
   font-family: 'Inter', sans-serif;
 }
+
 
 body::before {
   content: "";
@@ -44,6 +51,8 @@ body::before {
 }
 
 .background-glow {
+
+
   position: fixed;
   width: 260px;
   height: 260px;
