@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const notificationStatus = document.getElementById("notification-status");
 
   // 27 October 2026, 11:00 AM in India (IST, UTC+5:30)
-  const launchDate = new Date("2026-10-27T11:00:00+05:30").getTime();
+  const launchDate = new Date("2026-10-27T11:20:00+05:30").getTime();
 
   let notificationEnabled = false;
   let launchNotificationSent = false;
